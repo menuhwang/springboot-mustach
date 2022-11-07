@@ -7,3 +7,9 @@ spring:
     url: jdbc:mysql://localhost:3306/likelion_board
     username: test
     password: test
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
