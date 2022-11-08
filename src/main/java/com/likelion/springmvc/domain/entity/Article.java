@@ -22,4 +22,12 @@ public class Article {
         this.title = title;
         this.content = content;
     }
+
+    public void updateTitle(String title) {
+        if (title != null) this.title = title;
+    }
+
+    public void updateContent(String content) {
+        if (content != null) this.content = content;
+    }
 }

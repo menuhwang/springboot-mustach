@@ -6,13 +6,10 @@ import com.likelion.springmvc.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -45,6 +42,24 @@ public class ArticleController {
     public String createArticle(ArticleDTO form) {
         log.info(form.toString());
         articleRepository.save(form.toEntity());
+        return "redirect:";
+    }
+
+    @PutMapping("/{id}")
+    public String updateArticle(@PathVariable("id") Long id, @RequestBody ArticleDTO articleDTO, Model model) {
+        // Todo. 수정 후 리다이렉트
+        log.info("{}", articleDTO);
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 게시물을 찾을 수 없습니다."));
+        article.updateTitle(articleDTO.getTitle());
+        article.updateContent(articleDTO.getContent());
+        Article saved = articleRepository.save(article); // 추후 비즈니스 레이어에서 트랜잭션 더티체킹 적용할 것.
+        model.addAttribute("article", saved);
+        return "articles/detail";
+    }
+    @DeleteMapping("/{id}")
+    public String deleteById(@PathVariable("id") Long id) {
+        log.info("{} 삭제", id);
+        articleRepository.deleteById(id);
         return "redirect:";
     }
 }
