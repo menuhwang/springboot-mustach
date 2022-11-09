@@ -54,12 +54,12 @@ public class ArticleController {
         article.updateContent(articleDTO.getContent());
         Article saved = articleRepository.save(article); // 추후 비즈니스 레이어에서 트랜잭션 더티체킹 적용할 것.
         model.addAttribute("article", saved);
-        return "articles/detail";
+        return "";
     }
     @DeleteMapping("/{id}")
     public String deleteById(@PathVariable("id") Long id) {
         log.info("{} 삭제", id);
         articleRepository.deleteById(id);
-        return "redirect:";
+        return "";
     }
 }

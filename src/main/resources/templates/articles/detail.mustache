@@ -37,8 +37,8 @@
             headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify(data)
         }).then(res => {
-            if (res.redirected) {
-                console.log(res);
+            if (res.ok) {
+                window.location.href = "/articles/" + id;
             }
         });
     }
@@ -47,8 +47,8 @@
         fetch("/articles/" + id, {
             method : 'DELETE',
         }).then(res => {
-            if (res.redirected) {
-                window.location.href = res.url;
+            if (res.ok) {
+                window.location.href = "/articles";
             }
         });
     }
