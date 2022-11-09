@@ -46,7 +46,6 @@ public class ArticleController {
 
     @PutMapping("/{id}")
     public String updateArticle(@PathVariable("id") Long id, @RequestBody ArticleDTO articleDTO, Model model) {
-        // Todo. 수정 후 리다이렉트
         log.info("{}", articleDTO);
         Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 게시물을 찾을 수 없습니다."));
         article.updateTitle(articleDTO.getTitle());
