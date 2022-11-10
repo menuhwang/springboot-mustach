@@ -19,7 +19,8 @@ public class Article {
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     private List<Reply> replies = new ArrayList<>();
 
-    public Article(String title, String content) {
+    public Article(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }

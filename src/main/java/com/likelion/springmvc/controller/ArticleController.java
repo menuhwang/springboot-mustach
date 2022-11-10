@@ -50,10 +50,11 @@ public class ArticleController {
     @PutMapping("/{id}")
     public String updateArticle(@PathVariable("id") Long id, @RequestBody ArticleDTO articleDTO, Model model) {
         log.info("{}", articleDTO);
-        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 게시물을 찾을 수 없습니다."));
-        article.updateTitle(articleDTO.getTitle());
-        article.updateContent(articleDTO.getContent());
-        Article saved = articleRepository.save(article); // 추후 비즈니스 레이어에서 트랜잭션 더티체킹 적용할 것.
+//        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 게시물을 찾을 수 없습니다."));
+//        article.updateTitle(articleDTO.getTitle());
+//        article.updateContent(articleDTO.getContent());
+//        Article saved = articleRepository.save(article); // 추후 비즈니스 레이어에서 트랜잭션 더티체킹 적용할 것.
+        Article saved = articleRepository.save(articleDTO.toEntity());
         model.addAttribute("article", saved);
         model.addAttribute("replies", saved.getReplies());
         return "articles/detail";

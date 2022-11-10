@@ -9,19 +9,21 @@ public class ArticleDTO {
     private String title;
     private String content;
 
-    public ArticleDTO(String title, String content) {
+    public ArticleDTO(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }
 
     public Article toEntity() {
-        return new Article(title, content);
+        return new Article(id, title, content);
     }
 
     @Override
     public String toString() {
         return "ArticleDTO{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

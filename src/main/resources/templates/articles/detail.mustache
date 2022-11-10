@@ -39,7 +39,7 @@
         console.log(id);
         let title = document.getElementById("update-title").value;
         let content = document.getElementById("update-content").value;
-        const data = {title, content};
+        const data = {id, title, content};
         console.log(data);
         fetch("/articles/" + id, {
             method : 'PUT',
