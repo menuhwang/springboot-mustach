@@ -12,6 +12,10 @@
 <div class="container mt-5 mb-5">
     {{#article}}
         {{>articles/articleForm}}
+        {{#replies}}
+            {{>reply/reply}}
+        {{/replies}}
+        {{>reply/new}}
         {{>articles/updateForm}}
     {{/article}}
 </div>
@@ -49,6 +53,15 @@
         }).then(res => {
             if (res.ok) {
                 window.location.href = "/articles";
+            }
+        });
+    }
+    function deleteReply(articleId, replyId) {
+        fetch(`/articles/${articleId}/reply/${replyId}`, {
+            method : 'DELETE',
+        }).then(res => {
+            if (res.ok) {
+                window.location.href = `/articles/${articleId}`;
             }
         });
     }

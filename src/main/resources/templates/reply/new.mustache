@@ -1,0 +1,20 @@
+<div class="card mt-5 mb-5">
+    <div class="card-header">
+        <h5>댓글 작성</h5>
+    </div>
+    <div class="card-body">
+        <form class="container" action="/articles/{{id}}/reply" method="post">
+            <div class="mb-3">
+                <label class="form-label">작성자</label>
+                <!--- name 속성안에 Dto의 필드명을 써주면 된다 -->
+                <input type="text" class="form-control" name="author">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">내용</label>
+                <!--- name 속성안에 Dto의 필드명을 써주면 된다 -->
+                <textarea class="form-control" rows="3" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

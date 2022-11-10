@@ -3,10 +3,9 @@ package com.likelion.springmvc.domain.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,10 +16,17 @@ public class Article {
     private Long id;
     private String title;
     private String content;
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private List<Reply> replies = new ArrayList<>();
 
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public void addReply(Reply reply) {
+        reply.setArticle(this);
+        replies.add(reply);
     }
 
     public void updateTitle(String title) {
