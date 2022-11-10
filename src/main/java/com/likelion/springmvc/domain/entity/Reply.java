@@ -26,6 +26,14 @@ public class Reply {
         this.content = content;
     }
 
+    public void updateAuthor(String author) {
+        if (author != null) this.author = author;
+    }
+
+    public void updateContent(String content) {
+        if (content != null) this.content = content;
+    }
+
     public void setArticle(Article article) {
         this.article = article;
     }
