@@ -16,7 +16,7 @@ public class Article {
     private Long id;
     private String title;
     private String content;
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
     private List<Reply> replies = new ArrayList<>();
 
     public Article(Long id, String title, String content) {
