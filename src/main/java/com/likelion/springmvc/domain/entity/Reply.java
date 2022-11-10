@@ -1,5 +1,6 @@
 package com.likelion.springmvc.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Reply {
     @Id
@@ -18,7 +20,8 @@ public class Reply {
     @JoinColumn(name = "article_id")
     private Article article;
 
-    public Reply(String author, String content) {
+    public Reply(Long id, String author, String content) {
+        this.id = id;
         this.author = author;
         this.content = content;
     }

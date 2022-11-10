@@ -82,4 +82,11 @@ public class ArticleController {
         replyRepository.deleteById(replyId);
         return "articles/detail";
     }
+
+    @PutMapping("/{articleId}/reply/{replyId}")
+    public String editReply(@PathVariable("replyId") Long replyId, @RequestBody ReplyDTO dto) {
+        log.info("id : {}, author : {}, content : {}", dto.getId(), dto.getAuthor(), dto.getContent());
+//        replyRepository.save(dto.toEntity()); // PK값으로 값이 있는지 검색, 이미 있으면 업데이트 없으면 인서트
+        return "articles/detail";
+    }
 }

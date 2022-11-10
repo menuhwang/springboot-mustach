@@ -1,9 +1,10 @@
-<div class="card mt-3 ms-5">
+<div class="card mt-3 ms-3">
     <div class="card-header">
         <h5>{{author}}</h5>
     </div>
     <div class="card-body">
         {{content}}
-        <button class="btn btn-primary float-end" onclick="deleteReply({{article.id}}, {{id}})">삭제</button>
+        <button class="btn btn-primary float-end ms-2" onclick="deleteReply({{article.id}}, {{id}})">삭제</button>
+        <button class="btn btn-primary float-end ms-2" onclick="enableEditReply({{id}})">수정</button>
     </div>
 </div>

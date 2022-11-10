@@ -6,10 +6,11 @@ import lombok.Setter;
 
 @Getter @Setter
 public class ReplyDTO {
+    private Long id;
     private String author;
     private String content;
 
     public Reply toEntity() {
-        return new Reply(author, content);
+        return new Reply(id, author, content);
     }
 }

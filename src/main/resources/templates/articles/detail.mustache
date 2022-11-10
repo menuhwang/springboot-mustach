@@ -14,6 +14,7 @@
         {{>articles/articleForm}}
         {{#replies}}
             {{>reply/reply}}
+            {{>reply/edit}}
         {{/replies}}
         {{>reply/new}}
         {{>articles/updateForm}}
@@ -59,6 +60,28 @@
     function deleteReply(articleId, replyId) {
         fetch(`/articles/${articleId}/reply/${replyId}`, {
             method : 'DELETE',
+        }).then(res => {
+            if (res.ok) {
+                window.location.href = `/articles/${articleId}`;
+            }
+        });
+    }
+    function enableEditReply(replyId) {
+        document.getElementById(`edit-reply-${replyId}`).hidden = false;
+    }
+    function disableEditReply(replyId) {
+        document.getElementById(`edit-reply-${replyId}`).hidden = true;
+    }
+    function editReply(articleId, replyId) {
+        let id = replyId;
+        let author = document.getElementById(`reply-edit-author-${replyId}`).value;
+        let content = document.getElementById(`reply-edit-content-${replyId}`).value;
+        const data = {id, author, content};
+        console.log(data);
+        fetch(`/articles/${articleId}/reply/${replyId}`, {
+            method : 'PUT',
+            headers : {'Content-Type' : 'application/json'},
+            body : JSON.stringify(data)
         }).then(res => {
             if (res.ok) {
                 window.location.href = `/articles/${articleId}`;

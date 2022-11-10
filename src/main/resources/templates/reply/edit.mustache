@@ -1,0 +1,10 @@
+<div hidden class="card card mt-3 ms-5" id="edit-reply-{{id}}">
+    <div class="card-header">
+        <input type="text" class="form-control" id="reply-edit-author-{{id}}" value="{{author}}">
+    </div>
+    <div class="card-body">
+        <textarea class="form-control" rows="3" id="reply-edit-content-{{id}}">{{content}}</textarea>
+        <button class="btn btn-primary float-end mt-2 ms-2" onclick="editReply({{article.id}}, {{id}})">수정</button>
+        <button class="btn btn-primary float-end mt-2 ms-2" onclick="disableEditReply({{id}})">취소</button>
+    </div>
+</div>
