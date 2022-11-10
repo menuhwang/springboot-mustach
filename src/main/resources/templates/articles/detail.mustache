@@ -12,11 +12,13 @@
 <div class="container mt-5 mb-5">
     {{#article}}
         {{>articles/articleForm}}
-        {{#replies}}
-            {{>reply/reply}}
-            {{>reply/edit}}
-        {{/replies}}
-        {{>reply/new}}
+        <div class="container" id="replies-wrapper">
+            {{#replies}}
+                {{>reply/reply}}
+                {{>reply/edit}}
+            {{/replies}}
+            {{>reply/new}}
+        </div>
         {{>articles/updateForm}}
     {{/article}}
 </div>
@@ -25,11 +27,13 @@
     function enableUpdateForm() {
         document.getElementById("article-form").hidden = true;
         document.getElementById("update-form").hidden = false;
+        document.getElementById("replies-wrapper").hidden = true;
     }
     function disableUpdateForm() {
         console.log("업데이트 취소 버튼");
         document.getElementById("article-form").hidden = false;
         document.getElementById("update-form").hidden = true;
+        document.getElementById("replies-wrapper").hidden = false;
     }
     function update(id) {
         console.log(id);
